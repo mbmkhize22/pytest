@@ -5,10 +5,11 @@ import time
 
 # Initialize the WebDriver
 # driver = webdriver.Chrome(executable_path="/path/to/chromedriver")
-driver = webdriver.Chrome(executable_path="C:\ProgramData\chocolatey\lib\chromedriver\tools")
+driver = webdriver.Chrome()
 
 # Open the provided URL
 driver.get("https://rahulshettyacademy.com/AutomationPractice/")
+time.sleep(5) # Let the user actually see something!
 
 # Radio Buttons
 radio_button_3 = driver.find_element(By.XPATH, "//input[@value='radio3']")
@@ -19,15 +20,20 @@ radio_button_3.click()
 assert radio_button_3.is_selected()
 assert not radio_button_2.is_selected()
 
+time.sleep(5) # Let the user actually see something!
+
 # Click on radio button 2 and validate
 radio_button_2.click()
 assert radio_button_2.is_selected()
 assert not radio_button_3.is_selected()
 
+time.sleep(5) # Let the user actually see something!
+
 # Suggestion Field
 suggestion_field = driver.find_element(By.ID, "autocomplete")
 suggestion_field.send_keys("South")
 time.sleep(1)  # Give time for suggestions to appear
+time.sleep(5) # Let the user actually see something!
 suggestion_option = driver.find_element(By.CSS_SELECTOR, ".ui-menu-item div")
 suggestion_option.click()
 assert suggestion_field.get_attribute("value") == "South Africa"
@@ -35,15 +41,20 @@ assert suggestion_field.get_attribute("value") == "South Africa"
 suggestion_field.clear()
 suggestion_field.send_keys("Republic")
 time.sleep(1)
+time.sleep(5) # Let the user actually see something!
 suggestion_option = driver.find_element(By.CSS_SELECTOR, ".ui-menu-item div")
 suggestion_option.click()
 assert suggestion_field.get_attribute("value") == "Republic of the Congo"
+
+time.sleep(5) # Let the user actually see something!
 
 # Checkboxes
 checkboxes = driver.find_elements(By.XPATH, "//input[@type='checkbox']")
 for checkbox in checkboxes:
     checkbox.click()
     assert checkbox.is_selected()
+
+time.sleep(5) # Let the user actually see something!
 
 checkboxes[0].click()
 for checkbox in checkboxes[1:]:
